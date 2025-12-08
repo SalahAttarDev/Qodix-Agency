@@ -229,7 +229,7 @@ const AdvancedServices = () => {
     }, []);
 
     return (
-        <section className="advanced-services-section" id="advanced-services" ref={sectionRef}>
+        <section className="advanced-services-section" id="services" ref={sectionRef}>
             {/* Subtle Background Shapes */}
             <div className="background-shapes">
                 <div className="shape shape-1" ref={el => backgroundShapesRef.current[0] = el}></div>
@@ -324,5 +324,3 @@ const AdvancedServices = () => {
 
 export default AdvancedServices;
 
-// Export the services array for easy editing
-export { extraServices };

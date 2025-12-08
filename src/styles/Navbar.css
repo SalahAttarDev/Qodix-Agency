@@ -16,7 +16,7 @@
     align-items: center;
     color: var(--color-main-black-text);
     
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     background-color: var(--color-white-bg);
     z-index: 1000;
@@ -160,7 +160,7 @@
 @media (max-width: 768px) {
     .navbar {
        
-        position: sticky;
+        /* position: sticky; */
         top: 0;
         background-color: var(--color-white-bg);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -260,12 +260,20 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
     
-    .nav--links.active {
-        height: 400px;
-        padding: 30px 0 20px 0;
-        border-bottom-right-radius: 17px;
-        border-bottom-left-radius: 17px;
-    }
+.nav--links.active {
+    background-color: #000000f5;
+    height: 400px;
+    padding: 30px 0 20px 0;
+    border-bottom-right-radius: 17px;
+    border-bottom-left-radius: 17px;
+    z-index: 1111;
+    opacity: 1; /* slightly more visible */
+    backdrop-filter: blur(10px); /* stronger blur */
+    -webkit-backdrop-filter: blur(10px); /* for Safari support */
+    background-color: rgba(255, 255, 255, 0.2); /* semi-transparent layer for glass effect */
+    transition: all 0.3s ease-in-out; /* smooth open/close */
+}
+
     
     .nav--links li {
         height: auto;

@@ -1,0 +1,122 @@
+/* src/styles/ScrollNavbar.css */
+
+.scroll-navbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.scroll-navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 20, 0.1),
+    0 2px 8px rgba(255, 255, 255, 0.2) inset;
+}
+
+.scroll-nav-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #000014;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
+  position: relative;
+}
+
+.scroll-nav-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(0, 0, 20, 0.05);
+}
+
+.up-arrow {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(0, 0, 20, 0.1);
+}
+
+.scroll-nav-icon::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 20, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.scroll-nav-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .scroll-navbar {
+    bottom: 20px;
+  }
+  
+  .scroll-navbar-container {
+    padding: 8px 16px;
+    gap: 6px;
+  }
+  
+  .scroll-nav-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .scroll-nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-navbar-container {
+    padding: 6px 12px;
+    gap: 4px;
+  }
+  
+  .scroll-nav-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .scroll-nav-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}

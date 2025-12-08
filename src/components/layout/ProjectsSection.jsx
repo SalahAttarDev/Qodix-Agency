@@ -103,7 +103,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="premium-projects-section" ref={sectionRef}>
+    <section id="projects" className="premium-projects-section" ref={sectionRef}>
       <div className="projects-container">
         {/* Section Header */}
         <motion.div 

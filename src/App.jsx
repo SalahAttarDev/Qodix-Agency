@@ -6,10 +6,12 @@ import AboutSection from './components/layout/AboutUs';
 import ClinicServices from './components/layout/ClinicServices';
 import AdvancedServices from './components/layout/AdvancedServices';
 import ProjectsSection from './components/layout/ProjectsSection';
+import ScrollNavbar from './components/layout/ScrollNavbar';
 export default function App() {
   return(
     <>
       <NavBar />   
+      <ScrollNavbar />
       <Hero />
       <AboutSection />
       <ClinicServices />
