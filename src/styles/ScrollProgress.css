@@ -1,0 +1,68 @@
+/* src/components/common/ScrollProgress.css */
+.scroll-progress {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-bar {
+  width: 2px;
+  height: 200px;
+  background: rgba(248, 250, 252, 0.1);
+  transform-origin: top;
+  transform: scaleY(0);
+  border-radius: 1px;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  border-radius: 1px;
+}
+
+.progress-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-black-bg);
+  border: 2px solid rgba(248, 250, 252, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-white-text);
+  transition: all 0.3s ease;
+}
+
+.progress-circle:hover {
+  border-color: #667eea;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .scroll-progress {
+    right: 15px;
+  }
+  
+  .progress-bar {
+    height: 150px;
+  }
+  
+  .progress-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 10px;
+  }
+}
