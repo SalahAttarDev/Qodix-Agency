@@ -298,6 +298,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border-radius: 100px;   
 }
 
 .newsletter-button::before {

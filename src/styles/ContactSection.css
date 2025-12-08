@@ -329,7 +329,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: #000014;
+    /* background: #000014; */
     transition: width 0.3s ease;
 }
 
@@ -362,6 +362,7 @@
     position: relative;
     overflow: hidden;
     margin-top: 16px;
+    border-radius: 100px;
 }
 
 .submit-button::before {

@@ -20,64 +20,58 @@ const ContactSection = () => {
     const formRef = useRef(null);
     const infoRef = useRef(null);
 
-    useEffect(() => {
-        // Create GSAP timeline for entrance animations
-        const tl = gsap.timeline({
+  useEffect(() => {
+    // Create individual ScrollTriggers for each element group
+    const elements = gsap.utils.toArray([
+        '.contact-header',
+        '.contact-info',
+        '.contact-form-wrapper',
+        '.form-group',
+        '.form-row'
+    ]);
+
+    // Animate each element when it enters viewport
+    elements.forEach((element) => {
+        gsap.fromTo(element, 
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 65%", // Triggers when element is 85% in viewport
+                    end: "top 50%",
+                    toggleActions: "play none none reverse",
+                    once: true, // Only animate once
+                }
+            }
+        );
+    });
+
+    // Background elements - quick fade in
+    gsap.fromTo('.contact-bg-element',
+        { scale: 0.9, opacity: 0 },
+        {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power2.out",
             scrollTrigger: {
                 trigger: contactRef.current,
-                start: "top 100%",
-                end: "bottom 20%",
+                start: "top 90%",
                 toggleActions: "play none none reverse",
+                once: true,
             }
-        });
+        }
+    );
 
-        // Background elements animation
-        tl.fromTo('.contact-bg-element',
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" }
-        );
-
-        // Header animation
-        tl.fromTo('.contact-header',
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-            "-=0.5"
-        );
-
-        // Contact info animation
-        tl.fromTo('.contact-info',
-            { x: -50, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-        );
-
-        // Form animation
-        tl.fromTo('.contact-form-wrapper',
-            { x: 50, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-            "-=0.4"
-        );
-
-        // Form fields stagger animation
-        tl.fromTo('.form-group, .form-row',
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" },
-            "-=0.3"
-        );
-
-        // Floating animation for background elements
-        gsap.to('.contact-bg-element', {
-            y: 20,
-            duration: 3,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            stagger: 0.5
-        });
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, []);
+    return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+}, []);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -268,7 +262,6 @@ const ContactSection = () => {
                                             required
                                             className="form-input"
                                         />
-                                        <div className="input-underline"></div>
                                     </div>
                                 </div>
                                 
@@ -286,7 +279,6 @@ const ContactSection = () => {
                                             required
                                             className="form-input"
                                         />
-                                        <div className="input-underline"></div>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +297,6 @@ const ContactSection = () => {
                                         required
                                         className="form-input"
                                     />
-                                    <div className="input-underline"></div>
                                 </div>
                             </div>
                             
@@ -320,7 +311,6 @@ const ContactSection = () => {
                                         placeholder="+1 (555) 000-0000"
                                         className="form-input"
                                     />
-                                    <div className="input-underline"></div>
                                 </div>
                             </div>
                             
@@ -338,7 +328,6 @@ const ContactSection = () => {
                                         required
                                         className="form-textarea"
                                     />
-                                    <div className="textarea-underline"></div>
                                 </div>
                             </div>
                             

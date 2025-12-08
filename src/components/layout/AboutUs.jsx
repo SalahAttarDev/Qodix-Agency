@@ -1,251 +1,261 @@
+// src/components/layout/AboutUs.jsx
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { 
+  Code, 
+  Palette, 
+  TrendingUp, 
+  Shield,
+  CheckCircle,
+  ArrowRight
+} from 'lucide-react';
 import '/src/styles/AboutUs.css';
 
-
-
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-const AboutSection = () => {
-    const aboutRef = useRef(null);
-    const visualRef = useRef(null);
-    const highlightsRef = useRef([]);
-
-    useEffect(() => {
-        // Create GSAP timeline for entrance animations
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: aboutRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-            },
-            defaults: { ease: "power3.out" }
-        });
-
-        // Background elements animation
-        tl.fromTo('.bg-element',
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 1, stagger: 0.1 }
-        );
-
-        // Section header animation
-        tl.fromTo('.section-title',
-            { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.9 },
-            "-=0.5"
-        );
-
-        // Description animation
-        tl.fromTo('.description-text',
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8 },
-            "-=0.4"
-        );
-
-        // Visual side animation
-        tl.fromTo(visualRef.current,
-            { scale: 0.95, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 1 },
-            "-=0.3"
-        );
-
-        // Highlights stagger animation
-        tl.fromTo('.highlight-item',
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.7, stagger: 0.15 },
-            "-=0.2"
-        );
-
-        // Floating animation for background elements
-        gsap.to('.bg-element', {
-            y: 20,
-            duration: 4,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            stagger: 0.3
-        });
-
-        // Subtle parallax for geometric pattern
-        gsap.to('.geometric-pattern', {
-            y: 50,
-            scrollTrigger: {
-                trigger: aboutRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, []);
-
-    return (
-        <section className="about-section sec" id="about" ref={aboutRef}>
-            {/* Abstract Background Elements */}
-            <div className="background-elements">
-                <div className="bg-element element-1"></div>
-                <div className="bg-element element-2"></div>
-                <div className="bg-element element-3"></div>
-                <div className="bg-element element-4"></div>
-                
-                {/* Geometric Lines */}
-                <div className="geometric-line line-1"></div>
-                <div className="geometric-line line-2"></div>
-                <div className="geometric-line line-3"></div>
-                
-                {/* Glowing Nodes */}
-                <div className="glow-node node-1"></div>
-                <div className="glow-node node-2"></div>
-                <div className="glow-node node-3"></div>
-                <div className="glow-node node-4"></div>
-            </div>
-
-            <div className="about-container">
-                {/* Section Header */}
-                <div className="section-header">
-                    <h2 className="section-title">About Qodix</h2>
-                    <div className="title-divider"></div>
-                </div>
-
-                <div className="about-content">
-                    {/* Left Side: Text Content */}
-                    <div className="text-content">
-                        <div className="description">
-                            <p className="description-text">
-                                Qodix is a premier web agency dedicated to delivering 
-                                <span className="highlight"> high-quality websites</span>, 
-                                <span className="highlight"> modern UX/UI</span>, and 
-                                <span className="highlight"> scalable digital solutions</span> 
-                                for businesses and enterprises.
-                            </p>
-                            
-                            <p className="description-text">
-                                We maintain professional standards through 
-                                <strong> reliable development</strong> and 
-                                <strong> clean code</strong>, ensuring every project delivers 
-                                <strong> business-focused results</strong> and establishes 
-                                <strong> long-term partnerships</strong>.
-                            </p>
-                        </div>
-
-                        {/* Key Highlights */}
-                        <div className="highlights-grid">
-                            <div 
-                                className="highlight-item"
-                                ref={el => highlightsRef.current[0] = el}
-                            >
-                                <div className="highlight-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M2 17L12 22L22 17" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M2 12L12 17L22 12" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </div>
-                                <div className="highlight-content">
-                                    <h3 className="highlight-title">Enterprise-grade Web Development</h3>
-                                    <p className="highlight-description">
-                                        Robust solutions for large-scale business operations
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div 
-                                className="highlight-item"
-                                ref={el => highlightsRef.current[1] = el}
-                            >
-                                <div className="highlight-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M9 9H15M9 15H15" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </div>
-                                <div className="highlight-content">
-                                    <h3 className="highlight-title">Custom Digital Solutions</h3>
-                                    <p className="highlight-description">
-                                        Tailored applications for specific business needs
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div 
-                                className="highlight-item"
-                                ref={el => highlightsRef.current[2] = el}
-                            >
-                                <div className="highlight-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="12" r="10" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M12 6V12L16 14" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </div>
-                                <div className="highlight-content">
-                                    <h3 className="highlight-title">High Performance & Security</h3>
-                                    <p className="highlight-description">
-                                        Optimized solutions with enterprise security
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div 
-                                className="highlight-item"
-                                ref={el => highlightsRef.current[3] = el}
-                            >
-                                <div className="highlight-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M18 10L12 4L6 10" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M12 4V20" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M20 20H4" stroke="#000014" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </div>
-                                <div className="highlight-content">
-                                    <h3 className="highlight-title">Modern & Scalable Architecture</h3>
-                                    <p className="highlight-description">
-                                        Future-proof technology for growth
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Visual Content */}
-                    <div className="visual-content" ref={visualRef}>
-                        <div className="visual-container">
-                            {/* Dark Geometric Pattern */}
-                            <div className="geometric-pattern">
-                                <div className="pattern-element elem-1"></div>
-                                <div className="pattern-element elem-2"></div>
-                                <div className="pattern-element elem-3"></div>
-                                <div className="pattern-element elem-4"></div>
-                                <div className="pattern-element elem-5"></div>
-                                <div className="pattern-element elem-6"></div>
-                            </div>
-                            
-                            {/* Professional Visual */}
-                            <div className="office-visual">
-                                <div className="visual-overlay">
-                                    <div className="overlay-content">
-                                        <div className="qodix-logo">
-                                            <svg width="60" height="60" viewBox="0 0 120 120" fill="none">
-                                                <rect x="20" y="20" width="80" height="80" rx="10" stroke="#F8FAFC" strokeWidth="4"/>
-                                                <path d="M40 40L80 80M80 40L40 80" stroke="#F8FAFC" strokeWidth="4"/>
-                                                <circle cx="60" cy="60" r="20" stroke="#F8FAFC" strokeWidth="4"/>
-                                            </svg>
-                                        </div>
-                                        <h4 className="overlay-title">Digital Excellence</h4>
-                                        <p className="overlay-subtitle">Crafting enterprise solutions since 2015</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+// About data object for easy updates
+const aboutInfo = {
+  title: "About Qodix",
+  tagline: "Delivering modern, enterprise-grade web solutions for businesses.",
+  description: [
+    "We specialize in creating high-quality websites and digital solutions tailored for performance and scalability. Our focus is on building robust platforms that drive business growth.",
+    "Our team combines expertise in design, development, and digital strategy to help businesses succeed online. We bridge the gap between technical excellence and business objectives.",
+    "We focus on delivering professional, clean, and trustworthy solutions for enterprises and growing companies. Each project is approached with precision and attention to detail."
+  ],
+  stats: [
+    { value: "50+", label: "Projects Delivered" },
+    { value: "95%", label: "Client Satisfaction" },
+    { value: "24/7", label: "Support" },
+    { value: "Enterprise", label: "Grade Solutions" }
+  ],
+  expertise: [
+    { 
+      name: "Web Development", 
+      icon: Code,
+      description: "Custom solutions built with modern frameworks and best practices"
+    },
+    { 
+      name: "UI/UX Design", 
+      icon: Palette,
+      description: "User-centric designs that combine aesthetics with functionality"
+    },
+    { 
+      name: "Digital Strategy", 
+      icon: TrendingUp,
+      description: "Data-driven strategies to maximize online presence and growth"
+    },
+    { 
+      name: "Enterprise Solutions", 
+      icon: Shield,
+      description: "Scalable architectures for large-scale business applications"
+    }
+  ],
+  values: [
+    "Commitment to quality and excellence",
+    "Transparent communication",
+    "Timely project delivery",
+    "Ongoing support and maintenance"
+  ]
 };
 
-export default AboutSection;
+const AboutUs = () => {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const textContentRef = useRef(null);
+  const visualContentRef = useRef(null);
+
+  useEffect(() => {
+    // Check if section is already in view on load
+    const checkInitialView = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isInView) {
+        // If already in viewport, animate immediately
+        animateSection();
+      } else {
+        // Otherwise, wait for scroll trigger
+        setupScrollTrigger();
+      }
+    };
+
+    const animateSection = () => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      
+      // Background elements
+      tl.fromTo('.bg-shape',
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1 }
+      )
+      
+      // Header
+      .fromTo(headerRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        "-=0.3"
+      )
+      
+      // Text content
+      .fromTo('.description-block',
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, stagger: 0.15 },
+        "-=0.2"
+      )
+      
+      // Values section
+      .fromTo('.values-section',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        "-=0.4"
+      )
+      
+      // Stats cards
+      .fromTo('.stat-card',
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1 },
+        "-=0.3"
+      )
+      
+      // Expertise cards
+      .fromTo('.expertise-card',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1 },
+        "-=0.4"
+      )
+      
+      // CTA section
+      .fromTo('.about-cta',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        "-=0.2"
+      );
+    };
+
+    const setupScrollTrigger = () => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 80%", // Triggers when 80% of element is in viewport
+        onEnter: animateSection,
+        once: true, // Only trigger once
+        markers: false // Set to true for debugging
+      });
+    };
+
+    // Add small delay to ensure DOM is ready
+    setTimeout(() => {
+      checkInitialView();
+    }, 100);
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  return (
+    <section className="premium-about-section" ref={sectionRef} id="about">
+      {/* Background Abstract Elements */}
+      <div className="about-bg-elements">
+        <div className="bg-shape shape-1"></div>
+        <div className="bg-shape shape-2"></div>
+        <div className="bg-shape shape-3"></div>
+        <div className="bg-grid-line line-1"></div>
+        <div className="bg-grid-line line-2"></div>
+        <div className="bg-grid-line line-3"></div>
+      </div>
+
+      <div className="about-container">
+        {/* Section Header */}
+        <div className="section-header" ref={headerRef}>
+          <div className="section-prefix">
+            <div className="prefix-line"></div>
+            <span className="prefix-text">WHO WE ARE</span>
+            <div className="prefix-line"></div>
+          </div>
+          
+          <h2 className="section-title">{aboutInfo.title}</h2>
+          
+          <p className="section-tagline">
+            {aboutInfo.tagline}
+          </p>
+        </div>
+
+        {/* Main Content */}
+        <div className="about-content">
+          {/* Left Column - Text Content */}
+          <div className="text-content" ref={textContentRef}>
+            {/* Description Paragraphs */}
+            <div className="description-grid">
+              {aboutInfo.description.map((paragraph, index) => (
+                <div key={index} className="description-block">
+                  <p className="description-text">{paragraph}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Key Values */}
+            <div className="values-section">
+              <h3 className="values-title">Our Commitment</h3>
+              <ul className="values-list">
+                {aboutInfo.values.map((value, index) => (
+                  <li key={index} className="value-item">
+                    <CheckCircle size={18} className="value-icon" />
+                    <span>{value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Column - Stats & Expertise */}
+          <div className="visual-content" ref={visualContentRef}>
+            {/* Stats Cards */}
+            <div className="stats-grid">
+              {aboutInfo.stats.map((stat, index) => (
+                <div key={index} className="stat-card">
+                  <h3 className="stat-value">{stat.value}</h3>
+                  <p className="stat-label">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Expertise Cards */}
+            <div className="expertise-grid">
+              {aboutInfo.expertise.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={index} className="expertise-card">
+                    <div className="expertise-icon">
+                      <Icon size={24} />
+                    </div>
+                    <h4 className="expertise-title">{item.name}</h4>
+                    <p className="expertise-description">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="about-cta">
+          <div className="cta-content">
+            <h3 className="cta-title">Ready to elevate your digital presence?</h3>
+            <p className="cta-description">
+              Partner with Qodix for professional, enterprise-grade solutions tailored to your business needs.
+            </p>
+            <a href="#contact" className="cta-button">
+              <span>Start a Conversation</span>
+              <ArrowRight size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutUs;
