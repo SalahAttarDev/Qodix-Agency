@@ -1,0 +1,511 @@
+/* Clinic Services Section */
+.clinic-services-section {
+    position: relative;
+    padding: 120px 0;
+    background-color: #F8FAFC;
+    overflow: hidden;
+}
+
+/* Medical Background */
+.medical-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.medical-bg-element {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 20, 0.03);
+    filter: blur(60px);
+}
+
+.element-1 {
+    top: 10%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+}
+
+.element-2 {
+    bottom: 15%;
+    left: 5%;
+    width: 400px;
+    height: 400px;
+}
+
+.element-3 {
+    top: 40%;
+    left: 15%;
+    width: 200px;
+    height: 200px;
+}
+
+/* Medical Graphics */
+.medical-graphic {
+    position: absolute;
+    color: rgba(0, 0, 20, 0.05);
+    z-index: 1;
+}
+
+.cross-graphic {
+    font-size: 48px;
+}
+
+.cross-1 {
+    top: 20%;
+    left: 10%;
+}
+
+.cross-2 {
+    top: 60%;
+    right: 15%;
+}
+
+.cross-3 {
+    bottom: 20%;
+    left: 30%;
+}
+
+/* Molecular Lines */
+.molecular-line {
+    position: absolute;
+    background: rgba(0, 0, 20, 0.02);
+}
+
+.line-1 {
+    top: 0;
+    left: 20%;
+    width: 1px;
+    height: 100%;
+}
+
+.line-2 {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+}
+
+.line-3 {
+    top: 0;
+    left: 80%;
+    width: 1px;
+    height: 100%;
+}
+
+/* Curved Waves */
+.wave-graphic {
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    border: 1px solid rgba(0, 0, 20, 0.03);
+    border-radius: 50%;
+}
+
+.wave-1 {
+    top: 15%;
+    right: -100px;
+    transform: rotate(45deg);
+}
+
+.wave-2 {
+    bottom: 10%;
+    left: -150px;
+    transform: rotate(-30deg);
+}
+
+/* Container */
+.clinic-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(0, 0, 20, 0.05);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.section-tag svg {
+    width: 16px;
+    height: 16px;
+    color: #000014;
+}
+
+.section-tag span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #000014;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000014;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.section-divider {
+    width: 80px;
+    height: 3px;
+    background: #000014;
+    margin: 0 auto 24px;
+    opacity: 0.8;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Clinic Services Grid */
+.clinic-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+/* Clinic Card */
+.clinic-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 20, 0.08);
+    border: 1px solid rgba(0, 0, 20, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.clinic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000014, rgba(0, 0, 20, 0.5));
+    border-radius: 4px 4px 0 0;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(0, 0, 20, 0.05);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.card-number {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(0, 0, 20, 0.3);
+    letter-spacing: 2px;
+}
+
+.card-body {
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000014;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.card-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.card-features {
+    margin-bottom: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 20, 0.1);
+}
+
+.features-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.features-label svg {
+    width: 16px;
+    height: 16px;
+    color: #000014;
+}
+
+.features-label span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #000014;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.feature-icon {
+    width: 12px;
+    height: 12px;
+    color: #000014;
+    opacity: 0.6;
+}
+
+.feature-text {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.card-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 20, 0.1);
+}
+
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #000014;
+    color: #F8FAFC;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button:hover {
+    background: rgba(0, 0, 20, 0.9);
+    transform: translateY(-2px);
+}
+
+.card-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Additional Services */
+.additional-services {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 20, 0.08);
+    border: 1px solid rgba(0, 0, 20, 0.1);
+}
+
+.additional-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.additional-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000014;
+    margin-bottom: 12px;
+}
+
+.additional-description {
+    font-size: 1.125rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.additional-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.additional-item {
+    text-align: center;
+    padding: 24px;
+    background: rgba(0, 0, 20, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 20, 0.08);
+    transition: all 0.3s ease;
+}
+
+.additional-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 0, 20, 0.15);
+}
+
+.additional-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 20, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.additional-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #000014;
+}
+
+.additional-item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000014;
+    margin-bottom: 8px;
+}
+
+.additional-item-text {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .clinic-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .clinic-services-section {
+        padding: 80px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 60px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .clinic-services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .additional-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-subtitle {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .clinic-services-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .clinic-card {
+        padding: 24px;
+    }
+    
+    .additional-services {
+        padding: 30px;
+    }
+    
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* Animation Classes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Cross Graphic Animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Medical-themed hover effects */
+.clinic-card:hover .card-icon {
+    background: rgba(0, 0, 20, 0.1);
+}
+
+/* Smooth transitions */
+/* .clinic-card * {
+    transition: all 0.3s ease;
+} */
