@@ -370,81 +370,73 @@ const ContactSection = () => {
                     
                 </div>
                 
-{/* WhatsApp Section */}
+{/* WhatsApp Section - Compact */}
 <div className="whatsapp-section">
-    <div className="whatsapp-header">
-        <div className="whatsapp-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24">
-                <path d="M12 2C6.486 2 2 6.486 2 12c0 2.186.701 4.246 2.024 5.964L2 22l4.036-2.024C7.754 21.299 9.814 22 12 22c5.514 0 10-4.486 10-10S17.514 2 12 2zm4.407 14.536c-.314.461-.771.839-1.399 1.155-.544.278-1.259.428-2.156.448-1.006.022-2.095-.093-3.267-.345l-.379-.084-3.026.789.824-2.945-.193-.397c-.404-.829-.607-1.615-.607-2.359 0-2.298 1.977-4.269 4.363-4.269 1.176 0 2.277.479 3.113 1.349.836.87 1.297 2.026 1.297 3.295 0 1.269-.461 2.426-1.297 3.295-.131.136-.272.262-.423.378zm-2.22-5.502c-.273 0-.533.056-.779.168-.246.112-.459.27-.639.474-.18.204-.323.447-.43.73-.107.282-.16.596-.16.941 0 .345.053.659.16.941.107.283.25.526.43.73.18.204.393.362.639.474.246.112.506.168.779.168.273 0 .533-.056.779-.168.246-.112.459-.27.639-.474.18-.204.323-.447.43-.73.107-.282.16-.596.16-.941 0-.345-.053-.659-.16-.941-.107-.283-.25-.526-.43-.73-.18-.204-.393-.362-.639-.474a1.97 1.97 0 0 0-.779-.168z"/>
-            </svg>
-        </div>
-        <h3 className="whatsapp-title">Instant Support on <span>WhatsApp</span></h3>
-    </div>
-    
     <div className="whatsapp-content">
+        {/* Left Column */}
         <div className="whatsapp-info">
+            <div className="whatsapp-header">
+                <svg className="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C6.486 2 2 6.486 2 12c0 2.186.701 4.246 2.024 5.964L2 22l4.036-2.024C7.754 21.299 9.814 22 12 22c5.514 0 10-4.486 10-10S17.514 2 12 2zm4.407 14.536c-.314.461-.771.839-1.399 1.155-.544.278-1.259.428-2.156.448-1.006.022-2.095-.093-3.267-.345l-.379-.084-3.026.789.824-2.945-.193-.397c-.404-.829-.607-1.615-.607-2.359 0-2.298 1.977-4.269 4.363-4.269 1.176 0 2.277.479 3.113 1.349.836.87 1.297 2.026 1.297 3.295 0 1.269-.461 2.426-1.297 3.295-.131.136-.272.262-.423.378zm-2.22-5.502c-.273 0-.533.056-.779.168-.246.112-.459.27-.639.474-.18.204-.323.447-.43.73-.107.282-.16.596-.16.941 0 .345.053.659.16.941.107.283.25.526.43.73.18.204.393.362.639.474.246.112.506.168.779.168.273 0 .533-.056.779-.168.246-.112.459-.27.639-.474.18-.204.323-.447.43-.73.107-.282.16-.596.16-.941 0-.345-.053-.659-.16-.941-.107-.283-.25-.526-.43-.73-.18-.204-.393-.362-.639-.474a1.97 1.97 0 0 0-.779-.168z" fill="currentColor"/>
+                </svg>
+                <h3 className="whatsapp-title">Instant Support on <span>WhatsApp</span></h3>
+            </div>
+            
             <p className="whatsapp-description">
                 Get immediate responses to your questions. Connect directly with our team on WhatsApp for quick discussions about your project needs and requirements.
             </p>
             
-            <div className="whatsapp-number-container">
-                <svg className="number-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <div className="number-content">
-                    <p className="number-value">+1 (555) 123-4567</p>
-                    <p className="number-label">WhatsApp Business Number</p>
-                </div>
+            <div className="whatsapp-number">
+                <p className="number-value">+1 (555) 123-4567</p>
+                <p className="number-label">WhatsApp Business Number</p>
             </div>
-            
-          
         </div>
-        <div className="whatsapp-call">
-          <div className="whatsapp-features">
+        
+        {/* Right Column */}
+        <div>
+            <div className="whatsapp-features">
                 <div className="feature-item">
-                    <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg className="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>Instant Response</span>
                 </div>
                 <div className="feature-item">
-                    <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg className="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>File Sharing</span>
                 </div>
                 <div className="feature-item">
-                    <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg className="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>24/7 Available</span>
                 </div>
                 <div className="feature-item">
-                    <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg className="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>Voice Messages</span>
                 </div>
-                
             </div>
-                   <a 
-            href="https://wa.me/15551234567?text=Hello%20Qodix%21%20I'm%20interested%20in%20your%20services" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="whatsapp-button"
-        >
-            <svg width="22" height="22" viewBox="0 0 24 24">
-                <path d="M12 2C6.486 2 2 6.486 2 12c0 2.186.701 4.246 2.024 5.964L2 22l4.036-2.024C7.754 21.299 9.814 22 12 22c5.514 0 10-4.486 10-10S17.514 2 12 2zm4.407 14.536c-.314.461-.771.839-1.399 1.155-.544.278-1.259.428-2.156.448-1.006.022-2.095-.093-3.267-.345l-.379-.084-3.026.789.824-2.945-.193-.397c-.404-.829-.607-1.615-.607-2.359 0-2.298 1.977-4.269 4.363-4.269 1.176 0 2.277.479 3.113 1.349.836.87 1.297 2.026 1.297 3.295 0 1.269-.461 2.426-1.297 3.295-.131.136-.272.262-.423.378zm-2.22-5.502c-.273 0-.533.056-.779.168-.246.112-.459.27-.639.474-.18.204-.323.447-.43.73-.107.282-.16.596-.16.941 0 .345.053.659.16.941.107.283.25.526.43.73.18.204.393.362.639.474.246.112.506.168.779.168.273 0 .533-.056.779-.168.246-.112.459-.27.639-.474.18-.204.323-.447.43-.73.107-.282.16-.596.16-.941 0-.345-.053-.659-.16-.941-.107-.283-.25-.526-.43-.73-.18-.204-.393-.362-.639-.474a1.97 1.97 0 0 0-.779-.168z"/>
-            </svg>
-            <span>Start WhatsApp Chat</span>
-        </a>
-        
+            
+            <a 
+                href="https://wa.me/15551234567?text=Hello%20Qodix%21%20I'm%20interested%20in%20your%20services" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="whatsapp-button"
+            >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C6.486 2 2 6.486 2 12c0 2.186.701 4.246 2.024 5.964L2 22l4.036-2.024C7.754 21.299 9.814 22 12 22c5.514 0 10-4.486 10-10S17.514 2 12 2zm4.407 14.536c-.314.461-.771.839-1.399 1.155-.544.278-1.259.428-2.156.448-1.006.022-2.095-.093-3.267-.345l-.379-.084-3.026.789.824-2.945-.193-.397c-.404-.829-.607-1.615-.607-2.359 0-2.298 1.977-4.269 4.363-4.269 1.176 0 2.277.479 3.113 1.349.836.87 1.297 2.026 1.297 3.295 0 1.269-.461 2.426-1.297 3.295-.131.136-.272.262-.423.378zm-2.22-5.502c-.273 0-.533.056-.779.168-.246.112-.459.27-.639.474-.18.204-.323.447-.43.73-.107.282-.16.596-.16.941 0 .345.053.659.16.941.107.283.25.526.43.73.18.204.393.362.639.474.246.112.506.168.779.168.273 0 .533-.056.779-.168.246-.112.459-.27.639-.474.18-.204.323-.447.43-.73.107-.282.16-.596.16-.941 0-.345-.053-.659-.16-.941-.107-.283-.25-.526-.43-.73-.18-.204-.393-.362-.639-.474a1.97 1.97 0 0 0-.779-.168z" fill="currentColor"/>
+                </svg>
+                <span>Start WhatsApp Chat</span>
+            </a>
         </div>
- 
     </div>
 </div>
 
-
+                
             </div>
         </section>
     );
