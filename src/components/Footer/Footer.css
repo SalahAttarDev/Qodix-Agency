@@ -5,6 +5,30 @@
     color: #F8FAFC;
     padding: 80px 0 40px;
     overflow: hidden;
+    /* Ensure content is visible before animation */
+    visibility: visible !important;
+}
+
+/* Ensure all footer content starts visible */
+.footer-container,
+.footer-top,
+.footer-brand,
+.footer-links-group,
+.newsletter-section,
+.footer-bottom {
+    visibility: visible;
+}
+
+/* Add initial opacity for smoother transition */
+.footer-bg-element {
+    opacity: 0; /* Start hidden, will be animated */
+}
+
+.footer-brand,
+.footer-links-group,
+.newsletter-section,
+.footer-bottom {
+    opacity: 1; /* Start visible but ready for animation */
 }
 
 /* Background Elements */
@@ -201,6 +225,9 @@
     position: relative;
     padding-left: 0;
     display: inline-block;
+    animation: linkReveal 0.3s ease forwards;
+    opacity: 0;
+    animation-delay: calc(var(--index) * 0.05s);
 }
 
 .footer-link::before {
@@ -219,6 +246,12 @@
 .footer-link:hover::before {
     opacity: 1;
     left: 0;
+}
+
+@keyframes linkReveal {
+    to {
+        opacity: 1;
+    }
 }
 
 /* Newsletter Section */
@@ -368,6 +401,9 @@
     font-size: 0.9rem;
     transition: all 0.3s ease;
     position: relative;
+    animation: linkReveal 0.3s ease forwards;
+    opacity: 0;
+    animation-delay: calc(var(--index) * 0.05s + 0.3s);
 }
 
 .legal-link::after {
@@ -507,21 +543,32 @@
     }
 }
 
-/* Link Hover Animations */
-.footer-link {
-    animation: linkReveal 0.6s ease forwards;
-    opacity: 0;
-    animation-delay: calc(var(--index) * 0.1s);
-}
-
-@keyframes linkReveal {
-    to {
-        opacity: 1;
-    }
-}
-
 /* Smooth Scroll Animation */
 .footer-link,
 .legal-link {
     scroll-behavior: smooth;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .footer-link,
+    .legal-link,
+    .footer-brand,
+    .footer-links-group,
+    .newsletter-section,
+    .footer-bottom {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .dot {
+        animation: none !important;
+    }
+    
+    .social-icon:hover,
+    .newsletter-button:hover {
+        transform: none !important;
+    }
 }

@@ -1,7 +1,7 @@
 // src/components/layout/ProjectsSection.jsx
 import React, { useEffect, useRef } from 'react';
-import { motion,  useInView, useAnimation } from 'framer-motion';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { motion, useInView, useAnimation } from 'framer-motion';
+import { ArrowUpRight, ExternalLink, Briefcase } from 'lucide-react';
 import '/src/components/Projects/ProjectsSection.css';
 
 // Premium project data with just image, title, description, and live preview
@@ -58,7 +58,7 @@ const projects = [
 
 const ProjectsSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -67,55 +67,59 @@ const ProjectsSection = () => {
     }
   }, [isInView, controls]);
 
-  const containerVariants = {
+  // Simplified animations
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.4 } }
+  };
+
+  const slideUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
+  const cardHover = {
+    initial: { scale: 1 },
+    hover: { scale: 1.02, transition: { duration: 0.2 } }
   };
 
   return (
-    <section id="projects" className="premium-projects-section" ref={sectionRef}>
+    <section id="projects" className="projects-section" ref={sectionRef}>
+      {/* Background Elements */}
+      <div className="projects-bg-elements">
+        <div className="projects-wave projects-wave-1"></div>
+        <div className="projects-wave projects-wave-2"></div>
+        <div className="projects-wave projects-wave-3"></div>
+        <div className="projects-grid-line projects-line-1"></div>
+        <div className="projects-grid-line projects-line-2"></div>
+        <div className="projects-grid-line projects-line-3"></div>
+        <div className="projects-vertical-line projects-vertical-1"></div>
+        <div className="projects-vertical-line projects-vertical-2"></div>
+        <div className="projects-vertical-line projects-vertical-3"></div>
+      </div>
+
       <div className="projects-container">
         {/* Section Header */}
         <motion.div 
           className="section-header"
           initial="hidden"
           animate={controls}
-          variants={headerVariants}
+          variants={slideUp}
         >
           <div className="section-prefix">
-            <div className="prefix-line"></div>
-            <span className="prefix-text">SELECTED WORK</span>
-            <div className="prefix-line"></div>
+            <Briefcase size={14} />
+            <span>SELECTED WORK</span>
           </div>
           
           <h2 className="section-title">Featured Projects</h2>
@@ -129,7 +133,7 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <motion.div 
           className="projects-grid"
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           animate={controls}
         >
@@ -137,34 +141,28 @@ const ProjectsSection = () => {
             <motion.article 
               key={project.id}
               className="project-card"
-              variants={itemVariants}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              variants={slideUp}
+              whileHover="hover"
+              initial="initial"
             >
               {/* Image Container */}
               <div className="project-image-container">
                 <div className="image-wrapper">
-                  <motion.img 
+                  <img 
                     src={project.image} 
                     alt={project.title}
                     className="project-image"
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
                   />
                   <div className="image-overlay">
-                    <div className="overlay-content">
-                      <motion.a 
-                        href={project.livePreview}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="preview-button"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink size={20} />
-                        <span>Live Preview</span>
-                      </motion.a>
-                    </div>
+                    <a 
+                      href={project.livePreview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="preview-button"
+                    >
+                      <ExternalLink size={18} />
+                      <span>Live Preview</span>
+                    </a>
                   </div>
                 </div>
                 
@@ -178,15 +176,14 @@ const ProjectsSection = () => {
               <div className="project-content">
                 <div className="project-header">
                   <h3 className="project-title">{project.title}</h3>
-                  <motion.a 
+                  <a 
                     href={project.livePreview}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="external-link"
-                    whileHover={{ x: 2 }}
                   >
                     <ArrowUpRight size={20} />
-                  </motion.a>
+                  </a>
                 </div>
                 
                 <p className="project-description">{project.description}</p>
@@ -207,30 +204,7 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
 
-        {/* CTA Section */}
-        <motion.div 
-          className="projects-cta"
-          initial={{ opacity: 0, y: 20 }}
-          animate={controls}
-          variants={itemVariants}
-          transition={{ delay: 0.8 }}
-        >
-          <div className="cta-content">
-            <h3 className="cta-title">Have a project in mind?</h3>
-            <p className="cta-description">
-              Let's create something exceptional together. Reach out to discuss your next digital experience.
-            </p>
-            <motion.a 
-              href="#contact"
-              className="cta-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span>Start a Conversation</span>
-              <ArrowUpRight size={20} />
-            </motion.a>
-          </div>
-        </motion.div>
+      
       </div>
     </section>
   );

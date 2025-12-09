@@ -6,12 +6,7 @@ import {
   Linkedin, 
   Github, 
   Dribbble,
-  Mail,
-  Phone,
-  MapPin,
-  ArrowRight,
-  Send,
-  Check
+  ArrowRight
 } from 'lucide-react';
 import '/src/components/Footer/Footer.css';
 
@@ -25,51 +20,68 @@ const Footer = () => {
     const bottomRef = useRef(null);
 
     useEffect(() => {
+        // Pre-animation: Set initial states for immediate visibility
+        gsap.set([brandRef.current, ...linksRef.current, newsletterRef.current, bottomRef.current], {
+            opacity: 1
+        });
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: footerRef.current,
-                start: "top 90%",
+                start: "top 95%", // Trigger earlier
                 end: "bottom 20%",
                 toggleActions: "play none none reverse",
+                once: true, // Only play once
+                scrub: false
             }
         });
 
+        // Animate background elements first (non-blocking)
         tl.fromTo('.footer-bg-element',
             { scale: 0.9, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.6, stagger: 0.08, ease: "power2.out" }
+            { scale: 1, opacity: 1, duration: 0.4, stagger: 0.04, ease: "power2.out" },
+            "start"
         );
 
+        // Animate content immediately after, with less delay
         tl.fromTo(brandRef.current,
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
-            "-=0.3"
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+            "start+=0.1" // Reduced delay
         );
 
         tl.fromTo('.footer-links-group',
-            { y: 15, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-            "-=0.2"
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" },
+            "start+=0.15"
         );
 
         tl.fromTo(newsletterRef.current,
-            { scale: 0.95, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" },
-            "-=0.4"
+            { scale: 0.98, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" },
+            "start+=0.2"
         );
 
         tl.fromTo(bottomRef.current,
-            { y: 15, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
-            "-=0.2"
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+            "start+=0.25"
         );
 
+        // Add fade-in effect for links with staggered delay
+        const links = document.querySelectorAll('.footer-link, .legal-link');
+        links.forEach((link, index) => {
+            link.style.setProperty('--index', index);
+        });
+
+        // Hover effects
         const socialIcons = document.querySelectorAll('.social-icon');
         socialIcons.forEach(icon => {
             icon.addEventListener('mouseenter', () => {
                 gsap.to(icon, {
                     y: -3,
                     scale: 1.1,
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -78,7 +90,7 @@ const Footer = () => {
                 gsap.to(icon, {
                     y: 0,
                     scale: 1,
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -91,7 +103,7 @@ const Footer = () => {
             newsletterInput.addEventListener('focus', () => {
                 gsap.to(newsletterInput, {
                     borderColor: "#000014",
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -99,7 +111,7 @@ const Footer = () => {
             newsletterInput.addEventListener('blur', () => {
                 gsap.to(newsletterInput, {
                     borderColor: "rgba(0, 0, 20, 0.1)",
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -109,7 +121,7 @@ const Footer = () => {
             newsletterButton.addEventListener('mouseenter', () => {
                 gsap.to(newsletterButton, {
                     scale: 1.05,
-                    duration: 0.2,
+                    duration: 0.15,
                     ease: "power2.out"
                 });
             });
@@ -117,19 +129,20 @@ const Footer = () => {
             newsletterButton.addEventListener('mouseleave', () => {
                 gsap.to(newsletterButton, {
                     scale: 1,
-                    duration: 0.2,
+                    duration: 0.15,
                     ease: "power2.out"
                 });
             });
         }
 
+        // Subtle floating animation for background elements
         gsap.to('.footer-bg-element', {
             y: 10,
             duration: 3,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
-            stagger: 0.3
+            stagger: 0.2
         });
 
         return () => {

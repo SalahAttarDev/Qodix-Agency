@@ -1,21 +1,13 @@
 // src/components/layout/AboutUs.jsx
 import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { 
-  Code, 
-  Palette, 
-  TrendingUp, 
-  Shield,
   CheckCircle,
-  ArrowRight
+  Users
 } from 'lucide-react';
 import '/src/components/About/AboutUs.css';
 
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-
-// About data object for easy updates
+// About data object
 const aboutInfo = {
   title: "About Qodix",
   tagline: "Delivering modern, enterprise-grade web solutions for businesses.",
@@ -24,169 +16,86 @@ const aboutInfo = {
     "Our team combines expertise in design, development, and digital strategy to help businesses succeed online. We bridge the gap between technical excellence and business objectives.",
     "We focus on delivering professional, clean, and trustworthy solutions for enterprises and growing companies. Each project is approached with precision and attention to detail."
   ],
-  stats: [
-    { value: "50+", label: "Projects Delivered" },
-    { value: "95%", label: "Client Satisfaction" },
-    { value: "24/7", label: "Support" },
-    { value: "Enterprise", label: "Grade Solutions" }
-  ],
-  expertise: [
-    { 
-      name: "Web Development", 
-      icon: Code,
-      description: "Custom solutions built with modern frameworks and best practices"
-    },
-    { 
-      name: "UI/UX Design", 
-      icon: Palette,
-      description: "User-centric designs that combine aesthetics with functionality"
-    },
-    { 
-      name: "Digital Strategy", 
-      icon: TrendingUp,
-      description: "Data-driven strategies to maximize online presence and growth"
-    },
-    { 
-      name: "Enterprise Solutions", 
-      icon: Shield,
-      description: "Scalable architectures for large-scale business applications"
-    }
-  ],
   values: [
-    "Commitment to quality and excellence",
+    "Commitment to quality",
     "Transparent communication",
-    "Timely project delivery",
-    "Ongoing support and maintenance"
-  ]
+    "Timely delivery",
+    "Ongoing support"
+  ],
+  // You can replace this with your actual company/team image
+  imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
 };
 
 const AboutUs = () => {
   const sectionRef = useRef(null);
-  const headerRef = useRef(null);
-  const textContentRef = useRef(null);
-  const visualContentRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const controls = useAnimation();
 
   useEffect(() => {
-    // Check if section is already in view on load
-    const checkInitialView = () => {
-      if (!sectionRef.current) return;
-      
-      const rect = sectionRef.current.getBoundingClientRect();
-      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-      
-      if (isInView) {
-        // If already in viewport, animate immediately
-        animateSection();
-      } else {
-        // Otherwise, wait for scroll trigger
-        setupScrollTrigger();
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  const slideUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.5,
+        ease: "easeOut"
+      } 
+    }
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut"
+      } 
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
       }
-    };
-
-    const animateSection = () => {
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      
-      // Background elements
-      tl.fromTo('.bg-shape',
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1 }
-      )
-      
-      // Header
-      .fromTo(headerRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7 },
-        "-=0.3"
-      )
-      
-      // Text content
-      .fromTo('.description-block',
-        { x: -20, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, stagger: 0.15 },
-        "-=0.2"
-      )
-      
-      // Values section
-      .fromTo('.values-section',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.4"
-      )
-      
-      // Stats cards
-      .fromTo('.stat-card',
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1 },
-        "-=0.3"
-      )
-      
-      // Expertise cards
-      .fromTo('.expertise-card',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1 },
-        "-=0.4"
-      )
-      
-      // CTA section
-      .fromTo('.about-cta',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7 },
-        "-=0.2"
-      );
-    };
-
-    const setupScrollTrigger = () => {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 80%", // Triggers when 80% of element is in viewport
-        onEnter: animateSection,
-        once: true, // Only trigger once
-        markers: false // Set to true for debugging
-      });
-    };
-
-    // Add small delay to ensure DOM is ready
-    setTimeout(() => {
-      checkInitialView();
-    }, 100);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+    }
+  };
 
   return (
-    <section className="premium-about-section" ref={sectionRef} id="about">
-      {/* Background Abstract Elements */}
-        <div className="projects-bg-elements">
-          <div className="projects-wave projects-wave-1"></div>
-          <div className="projects-wave projects-wave-2"></div>
-          <div className="projects-wave projects-wave-3"></div>
-          {/* Horizontal grid lines */}
-          <div className="projects-grid-line projects-line-1"></div>
-          <div className="projects-grid-line projects-line-2"></div>
-          <div className="projects-grid-line projects-line-3"></div>
-          {/* Vertical lines */}
-          <div className="projects-vertical-line projects-vertical-1"></div>
-          <div className="projects-vertical-line projects-vertical-2"></div>
-          <div className="projects-vertical-line projects-vertical-3"></div>
-      </div>
+    <section className="about-section" ref={sectionRef} id="about">
+      {/* Background Elements */}
       <div className="about-bg-elements">
-        <div className="bg-shape shape-1"></div>
-        <div className="bg-shape shape-2"></div>
-        <div className="bg-shape shape-3"></div>
-        <div className="bg-grid-line line-1"></div>
-        <div className="bg-grid-line line-2"></div>
-        <div className="bg-grid-line line-3"></div>
+        <div className="about-wave about-wave-1"></div>
+        <div className="about-wave about-wave-2"></div>
+        <div className="about-wave about-wave-3"></div>
+        <div className="about-grid-line about-line-1"></div>
+        <div className="about-grid-line about-line-2"></div>
+        <div className="about-grid-line about-line-3"></div>
+        <div className="about-vertical-line about-vertical-1"></div>
+        <div className="about-vertical-line about-vertical-2"></div>
+        <div className="about-vertical-line about-vertical-3"></div>
       </div>
 
       <div className="about-container">
         {/* Section Header */}
-        <div className="section-header" ref={headerRef}>
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          animate={controls}
+          variants={slideUp}
+        >
           <div className="section-prefix">
-            <div className="prefix-line"></div>
-            <span className="prefix-text">WHO WE ARE</span>
-            <div className="prefix-line"></div>
+            <Users size={14} />
+            <span>WHO WE ARE</span>
           </div>
           
           <h2 className="section-title">{aboutInfo.title}</h2>
@@ -194,58 +103,74 @@ const AboutUs = () => {
           <p className="section-tagline">
             {aboutInfo.tagline}
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Content */}
         <div className="about-content">
           {/* Left Column - Text Content */}
-          <div className="text-content" ref={textContentRef}>
+          <motion.div 
+            className="text-content"
+            initial="hidden"
+            animate={controls}
+            variants={staggerContainer}
+          >
             {/* Description Paragraphs */}
-            <div className="description-grid">
+            <motion.div 
+              className="description-grid"
+              variants={staggerContainer}
+            >
               {aboutInfo.description.map((paragraph, index) => (
-                <div key={index} className="description-block">
+                <motion.div 
+                  key={index} 
+                  className="description-block"
+                  variants={slideUp}
+                >
                   <p className="description-text">{paragraph}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Key Values */}
-            <div className="values-section">
-              <h3 className="values-title">Our Commitment</h3>
+            {/* Values Section */}
+            <motion.div 
+              className="values-section"
+              variants={slideUp}
+              transition={{ delay: 0.3 }}
+            >
+              <h3 className="values-title">Our Values</h3>
               <ul className="values-list">
                 {aboutInfo.values.map((value, index) => (
-                  <li key={index} className="value-item">
+                  <motion.li 
+                    key={index} 
+                    className="value-item"
+                    variants={slideUp}
+                    transition={{ delay: index * 0.05 + 0.4 }}
+                  >
                     <CheckCircle size={18} className="value-icon" />
                     <span>{value}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column - Stats & Expertise */}
-          <div className="visual-content" ref={visualContentRef}>
- 
-
-            {/* Expertise Cards */}
-            <div className="expertise-grid">
-              {aboutInfo.expertise.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div key={index} className="expertise-card">
-                    <div className="expertise-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h4 className="expertise-title">{item.name}</h4>
-                    <p className="expertise-description">{item.description}</p>
-                  </div>
-                );
-              })}
+          {/* Right Column - Image */}
+          <motion.div 
+            className="image-content"
+            initial="hidden"
+            animate={controls}
+            variants={fadeIn}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="image-wrapper">
+              <img 
+                src={aboutInfo.imageUrl} 
+                alt="Qodix team"
+                className="about-image"
+              />
+              <div className="image-overlay"></div>
             </div>
-          </div>
+          </motion.div>
         </div>
-
-
       </div>
     </section>
   );
