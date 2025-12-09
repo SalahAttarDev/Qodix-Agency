@@ -132,12 +132,26 @@
 }
 
 .dot-5 {
-  bottom: 40%;
+  bottom: 80%;
+  right: 30%;
+  width: 5px;
+  height: 5px;
+}
+
+.dot-6 {
+  bottom: 90%;
+  right: 70%;
+  width: 3px;
+  height: 3px;
+}
+
+
+.dot-7 {
+  bottom: 20%;
   right: 30%;
   width: 7px;
   height: 7px;
 }
-
 /* Hero Container */
 .hero-container {
   position: relative;

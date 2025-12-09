@@ -16,7 +16,7 @@ import {
     faNetworkWired,
     faChartBar
 } from '@fortawesome/free-solid-svg-icons';
-import '/src/styles/AdvancedServices.css';
+import '/src/components/Services/AdvancedServices.css';
 
 gsap.registerPlugin(ScrollTrigger);
 

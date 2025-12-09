@@ -6,7 +6,7 @@ import {
   Briefcase,
   Folder
 } from 'lucide-react';
-import '/src/styles/ScrollNavbar.css';
+import '/src/components/NavBar/ScrollNavbar.css';
 
 const ScrollNavbar = () => {
   const [isVisible, setIsVisible] = useState(false);

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion,  useInView, useAnimation } from 'framer-motion';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import '/src/styles/ProjectsSection.css';
+import '/src/components/Projects/ProjectsSection.css';
 
 // Premium project data with just image, title, description, and live preview
 const projects = [

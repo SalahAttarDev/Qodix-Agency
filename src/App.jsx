@@ -1,12 +1,11 @@
-import NavBar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import ContactUs from './components/layout/ContactUs';
-import Hero  from './components/layout/Hero';
-import AboutSection from './components/layout/AboutUs';
-import ClinicServices from './components/layout/ClinicServices';
-import AdvancedServices from './components/layout/AdvancedServices';
-import ProjectsSection from './components/layout/ProjectsSection';
-import ScrollNavbar from './components/layout/ScrollNavbar';
+import NavBar from './components/NavBar/Navbar.jsx'
+import Footer from './components/Footer/Footer.jsx'
+import ContactUs from './components/Contact/ContactUs.jsx';
+import Hero  from './components/Hero/Hero.jsx';
+import AboutSection from './components/About/AboutUs.jsx';
+import ServicesSection from './components/Services/ServicesSection.jsx';
+import ProjectsSection from './components/Projects/ProjectsSection.jsx';
+import ScrollNavbar from '/src/components/NavBar/ScrollNavbar.jsx';
 export default function App() {
   return(
     <>
@@ -14,8 +13,7 @@ export default function App() {
       <ScrollNavbar />
       <Hero />
       <AboutSection />
-      <ClinicServices />
-      <AdvancedServices />
+      <ServicesSection />
       <ProjectsSection />
       <ContactUs />
       <Footer />

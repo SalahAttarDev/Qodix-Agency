@@ -10,7 +10,7 @@ import {
   CheckCircle,
   ArrowRight
 } from 'lucide-react';
-import '/src/styles/AboutUs.css';
+import '/src/components/About/AboutUs.css';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -158,6 +158,19 @@ const AboutUs = () => {
   return (
     <section className="premium-about-section" ref={sectionRef} id="about">
       {/* Background Abstract Elements */}
+        <div className="projects-bg-elements">
+          <div className="projects-wave projects-wave-1"></div>
+          <div className="projects-wave projects-wave-2"></div>
+          <div className="projects-wave projects-wave-3"></div>
+          {/* Horizontal grid lines */}
+          <div className="projects-grid-line projects-line-1"></div>
+          <div className="projects-grid-line projects-line-2"></div>
+          <div className="projects-grid-line projects-line-3"></div>
+          {/* Vertical lines */}
+          <div className="projects-vertical-line projects-vertical-1"></div>
+          <div className="projects-vertical-line projects-vertical-2"></div>
+          <div className="projects-vertical-line projects-vertical-3"></div>
+      </div>
       <div className="about-bg-elements">
         <div className="bg-shape shape-1"></div>
         <div className="bg-shape shape-2"></div>
@@ -212,15 +225,7 @@ const AboutUs = () => {
 
           {/* Right Column - Stats & Expertise */}
           <div className="visual-content" ref={visualContentRef}>
-            {/* Stats Cards */}
-            <div className="stats-grid">
-              {aboutInfo.stats.map((stat, index) => (
-                <div key={index} className="stat-card">
-                  <h3 className="stat-value">{stat.value}</h3>
-                  <p className="stat-label">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+ 
 
             {/* Expertise Cards */}
             <div className="expertise-grid">
@@ -240,19 +245,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="about-cta">
-          <div className="cta-content">
-            <h3 className="cta-title">Ready to elevate your digital presence?</h3>
-            <p className="cta-description">
-              Partner with Qodix for professional, enterprise-grade solutions tailored to your business needs.
-            </p>
-            <a href="#contact" className="cta-button">
-              <span>Start a Conversation</span>
-              <ArrowRight size={20} />
-            </a>
-          </div>
-        </div>
+
       </div>
     </section>
   );

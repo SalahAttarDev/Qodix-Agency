@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import '/src/styles/Hero.css';
+import '/src/components/Hero/Hero.css';
 import Logo from '../../assets/logo/1.svg'; // Choose appropriate logo
 
 const Hero = () => {
@@ -91,6 +91,8 @@ const Hero = () => {
         <div className="glow-dot dot-3"></div>
         <div className="glow-dot dot-4"></div>
         <div className="glow-dot dot-5"></div>
+        <div className="glow-dot dot-6"></div>
+        <div className="glow-dot dot-7"></div>
       </div>
 
       {/* Hero Content */}

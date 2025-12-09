@@ -13,7 +13,7 @@ import {
   Send,
   Check
 } from 'lucide-react';
-import '/src/styles/Footer.css';
+import '/src/components/Footer/Footer.css';
 
 gsap.registerPlugin(ScrollTrigger);
 

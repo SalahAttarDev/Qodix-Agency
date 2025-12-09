@@ -14,7 +14,7 @@ import {
     faMobileAlt,
     faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons';
-import '/src/styles/ClinicServices.css';
+import '/src/components/Services/ClinicServices.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
