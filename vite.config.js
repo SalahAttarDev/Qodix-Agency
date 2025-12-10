@@ -16,13 +16,13 @@ export default defineConfig({
 
     // Allow external hosts (required for ngrok)
     allowedHosts: [
-      '064547491484.ngrok-free.app'
+      'c20edb04fb77.ngrok-free.app'
     ],
 
     // Optional but sometimes needed:
     strictPort: true,
     hmr: {
-      host: '064547491484.ngrok-free.app'
+      host: 'c20edb04fb77.ngrok-free.app'
     }
   }
 })

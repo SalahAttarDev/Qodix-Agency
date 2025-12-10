@@ -9,7 +9,7 @@ import '/src/components/About/AboutUs.css';
 
 // About data object
 const aboutInfo = {
-  title: "About Qodix",
+  title: "About Qodrix",
   tagline: "Delivering modern, enterprise-grade web solutions for businesses.",
   description: [
     "We specialize in creating high-quality websites and digital solutions tailored for performance and scalability. Our focus is on building robust platforms that drive business growth.",

@@ -243,15 +243,7 @@ const ContactSection = () => {
                             </div>
                         </div>
 
-                        <div className="info-cta">
-                            <p className="cta-text">Prefer a quick chat?</p>
-                            <button className="schedule-button">
-                                <span>Schedule a Call</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
+                       
                     </div>
 
                     {/* Right Side - Contact Form */}

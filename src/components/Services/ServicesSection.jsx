@@ -40,7 +40,34 @@ const services = [
     accentColor: "#667eea",
     isPremium: true
   },
-
+    {
+    id: 2,
+    title: "Medical Digital Solutions",
+    subtitle: "Premium specialized service",
+    icon: Stethoscope,
+    description: "Custom digital systems designed specifically for healthcare providers, clinics, and medical practices.",
+    features: [
+      "Custom medical systems (booking, patient management)",
+      "Medical websites & landing pages",
+      "HIPAA-inspired secure architecture"
+    ],
+    accentColor: "#667eea",
+    isPremium: true
+  },
+  {
+    id: 2,
+    title: "Medical Digital Solutions",
+    subtitle: "Premium specialized service",
+    icon: Stethoscope,
+    description: "Custom digital systems designed specifically for healthcare providers, clinics, and medical practices.",
+    features: [
+      "Custom medical systems (booking, patient management)",
+      "Medical websites & landing pages",
+      "HIPAA-inspired secure architecture"
+    ],
+    accentColor: "#667eea",
+    isPremium: true
+  },
   {
     id: 3,
     title: "AI, Automation & Mobile Apps",
