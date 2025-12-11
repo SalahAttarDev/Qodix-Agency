@@ -7,7 +7,15 @@
     --transition: 0.3s ease;
 }
 
+.logo a {
+    display: inline-block;
+    text-decoration: none;
+}
 
+.logo img {
+    height: 89px; /* Adjust as needed */
+    width: auto;
+}
 .navbar {
     width: 100%;
     height: fit-content;

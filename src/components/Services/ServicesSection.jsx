@@ -1,88 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
     Stethoscope,
     Laptop,
     Smartphone,
-    Shield,
+    Sparkles,
     ArrowRight,
-    Rocket
+    Rocket,
+    Star
 } from 'lucide-react';
+import { services } from './servicesData';
 import './ServicesSection.css';
-
-// EDITABLE SERVICES ARRAY - Update these as needed
-const services = [
-      {
-    id: 1,
-    title: "Web Development",
-    subtitle: "Professional web solutions",
-    icon: Laptop,
-    description: "High-performance websites and digital platforms for businesses across all industries.",
-    features: [
-      "Websites for restaurants, e-commerce, portfolios",
-      "Landing pages & full business systems",
-      "Responsive + SEO optimized"
-    ],
-    accentColor: "#43e97b",
-    isPremium: false
-  },
-  {
-    id: 2,
-    title: "Medical Digital Solutions",
-    subtitle: "Premium specialized service",
-    icon: Stethoscope,
-    description: "Custom digital systems designed specifically for healthcare providers, clinics, and medical practices.",
-    features: [
-      "Custom medical systems (booking, patient management)",
-      "Medical websites & landing pages",
-      "HIPAA-inspired secure architecture"
-    ],
-    accentColor: "#667eea",
-    isPremium: true
-  },
-    {
-    id: 2,
-    title: "Medical Digital Solutions",
-    subtitle: "Premium specialized service",
-    icon: Stethoscope,
-    description: "Custom digital systems designed specifically for healthcare providers, clinics, and medical practices.",
-    features: [
-      "Custom medical systems (booking, patient management)",
-      "Medical websites & landing pages",
-      "HIPAA-inspired secure architecture"
-    ],
-    accentColor: "#667eea",
-    isPremium: true
-  },
-  {
-    id: 2,
-    title: "Medical Digital Solutions",
-    subtitle: "Premium specialized service",
-    icon: Stethoscope,
-    description: "Custom digital systems designed specifically for healthcare providers, clinics, and medical practices.",
-    features: [
-      "Custom medical systems (booking, patient management)",
-      "Medical websites & landing pages",
-      "HIPAA-inspired secure architecture"
-    ],
-    accentColor: "#667eea",
-    isPremium: true
-  },
-  {
-    id: 3,
-    title: "AI, Automation & Mobile Apps",
-    subtitle: "Digital transformation",
-    icon: Smartphone,
-    description: "Intelligent solutions and mobile applications to automate and elevate your business.",
-    features: [
-      "AI chatbots & business automation",
-      "Mobile apps for iOS & Android",
-      "Smart workflows & digital transformation"
-    ],
-    accentColor: "#8b5cf6",
-    isPremium: false
-  }
-];
 
 const ServicesSection = () => {
     const sectionRef = useRef(null);
@@ -101,8 +30,8 @@ const ServicesSection = () => {
             opacity: 1, 
             y: 0, 
             transition: { 
-                duration: 0.5,
-                ease: "easeOut"
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1]
             } 
         }
     };
@@ -112,14 +41,30 @@ const ServicesSection = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const cardHover = {
+        rest: { 
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.3, ease: "easeOut" }
+        },
+        hover: { 
+            y: -8,
+            scale: 1.02,
+            transition: { 
+                duration: 0.4,
+                ease: [0.22, 1, 0.36, 1]
             }
         }
     };
 
     return (
         <section className="services-section" id="services" ref={sectionRef}>
-            {/* Background Elements */}
             <div className="services-bg-elements">
                 <div className="services-wave services-wave-1"></div>
                 <div className="services-wave services-wave-2"></div>
@@ -133,24 +78,27 @@ const ServicesSection = () => {
             </div>
 
             <div className="services-container">
-                {/* Section Header */}
                 <motion.div 
                     className="services-header"
                     initial="hidden"
                     animate={controls}
                     variants={slideUp}
                 >
-                    <div className="header-prefix">
+                    <motion.div 
+                        className="header-prefix"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                    >
                         <Rocket size={14} />
                         <span>OUR EXPERTISE</span>
-                    </div>
+                    </motion.div>
                     <h2 className="header-title">What We Offer</h2>
                     <p className="header-subtitle">
                         High-quality digital solutions crafted for your business.
                     </p>
                 </motion.div>
 
-                {/* Services Grid */}
                 <motion.div 
                     className="services-grid"
                     variants={staggerContainer}
@@ -164,27 +112,36 @@ const ServicesSection = () => {
                                 key={service.id}
                                 className={`service-card ${service.isPremium ? 'premium' : ''}`}
                                 variants={slideUp}
-                                whileHover={{ y: -4 }}
-                                transition={{ duration: 0.2 }}
+                                initial="rest"
+                                whileHover="hover"
+                                animate="rest"
+                                variants={cardHover}
                             >
                                 <div className="card-inner">
-                                    {/* Card Header */}
                                     <div className="card-header">
                                         <div className="service-icon-wrapper">
-                                            <div className="service-icon">
+                                            <motion.div 
+                                                className="service-icon"
+                                                whileHover={{ rotate: [0, -10, 10, 0] }}
+                                                transition={{ duration: 0.5 }}
+                                            >
                                                 <Icon size={22} />
-                                            </div>
+                                            </motion.div>
                                             {service.isPremium && (
-                                                <div className="premium-badge">
-                                                    <Shield size={12} />
+                                                <motion.div 
+                                                    className="premium-badge"
+                                                    initial={{ scale: 0 }}
+                                                    animate={{ scale: 1 }}
+                                                    transition={{ delay: 0.3 + (index * 0.1), type: "spring" }}
+                                                >
+                                                    <Star size={10} />
                                                     <span>Premium</span>
-                                                </div>
+                                                </motion.div>
                                             )}
                                         </div>
                                         <div className="service-number">0{index + 1}</div>
                                     </div>
                                     
-                                    {/* Card Body */}
                                     <div className="card-body">
                                         <h3 className="service-title">{service.title}</h3>
                                         <p className="service-subtitle">{service.subtitle}</p>
@@ -192,22 +149,45 @@ const ServicesSection = () => {
                                         
                                         <div className="service-features">
                                             {service.features.map((feature, idx) => (
-                                                <div key={idx} className="feature">
+                                                <motion.div 
+                                                    key={idx} 
+                                                    className="feature"
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.4 + (idx * 0.1) }}
+                                                >
                                                     <ArrowRight size={14} />
                                                     <span>{feature}</span>
-                                                </div>
+                                                </motion.div>
                                             ))}
                                         </div>
                                     </div>
                                     
-                                    {/* Card Footer */}
                                     <div className="card-footer">
-                                        <button className="explore-button">
-                                            <span>Explore Service</span>
-                                            <ArrowRight size={16} />
-                                        </button>
+                                        <motion.div
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                        >
+                                            <Link 
+                                                to={`/services/${service.slug}`} 
+                                                className="explore-button"
+                                            >
+                                                <span>Explore Service</span>
+                                                <motion.div
+                                                    animate={{ x: 0 }}
+                                                    whileHover={{ x: 4 }}
+                                                    transition={{ type: "spring", stiffness: 300 }}
+                                                >
+                                                    <ArrowRight size={16} />
+                                                </motion.div>
+                                            </Link>
+                                        </motion.div>
                                     </div>
                                 </div>
+                                
+                                {service.isPremium && (
+                                    <div className="premium-overlay"></div>
+                                )}
                             </motion.div>
                         );
                     })}
@@ -218,5 +198,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
-// Export the services array for easy editing
