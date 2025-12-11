@@ -108,18 +108,9 @@ const Navbar = () => {
                                 </a>
                             </li>
                         ))}
-                        <li className="mobile-get-in-touch">
-                            <button onClick={handleGetInTouch}>
-                                Get in touch
-                            </button>
-                        </li>
+        
                     </ul>
-                    <div className="get-in-touch">
-                        <button onClick={handleGetInTouch}>
-                            Get in touch
-                        </button>
-                    </div>
-
+     
                     <button 
                         className="menu-toggle" 
                         onClick={() => setIsOpen(!isOpen)}
