@@ -142,7 +142,7 @@
     opacity: 0.8;
 }
 
-.section-title {
+.section-title-v1 {
     font-size: 3rem;
     font-weight: 700;
     color: #000014;
@@ -409,7 +409,7 @@
         gap: 30px;
     }
     
-    .section-title {
+    .section-title-v1 {
         font-size: 2.5rem;
     }
     
@@ -429,7 +429,7 @@
         margin-bottom: 60px;
     }
     
-    .section-title {
+    .section-title-v1 {
         font-size: 2rem;
     }
     
@@ -459,7 +459,7 @@
 }
 
 @media (max-width: 480px) {
-    .section-title {
+    .section-title-v1 {
         font-size: 1.75rem;
     }
     

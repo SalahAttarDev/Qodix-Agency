@@ -98,7 +98,7 @@ const AboutUs = () => {
             <span>WHO WE ARE</span>
           </div>
           
-          <h2 className="section-title">{aboutInfo.title}</h2>
+          <h2 className="section-title-v1">{aboutInfo.title}</h2>
           
           <p className="section-tagline">
             {aboutInfo.tagline}

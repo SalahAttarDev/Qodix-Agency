@@ -122,7 +122,7 @@ const ProjectsSection = () => {
             <span>SELECTED WORK</span>
           </div>
           
-          <h2 className="section-title">Featured Projects</h2>
+          <h2 className="section-title-v1">Featured Projects</h2>
           
           <p className="section-subtitle">
             A curated collection of premium digital experiences designed for clarity, 
